@@ -56,12 +56,15 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
+  
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
-
+  
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  
+  gem "faker", "~> 2.23"
+  gem "annotate", "~> 3.2"
 end
 
 group :test do
@@ -71,7 +74,6 @@ group :test do
   gem "webdrivers"
 end
 
-gem "faker", "~> 2.23"
 
 gem "cssbundling-rails", "~> 1.1"
 

@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: clients
+#
+#  id         :bigint           not null, primary key
+#  name       :string
+#  age        :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require "test_helper"
 
 class ClientTest < ActiveSupport::TestCase
