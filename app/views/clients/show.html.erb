@@ -1,6 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @client %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Movies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @client %>
+    </tr>
+  </tbody>
+</table>
 
 <div>
   <%= link_to "Edit this client", edit_client_path(@client) %> |
