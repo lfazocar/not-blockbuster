@@ -1,16 +1,10 @@
-
-  <div class="col-4 py-2">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= movie.name %></h5>
-        <p class="card-text">Status: 
-          <% unless movie.client.nil? %>
-            Taken by <%= movie.client.name %>
-          <% else %>
-            Available
-          <% end %>
-        </p>
-        <%= link_to "Show this movie", movie, class: "btn btn-primary" %>
-      </div>
-    </div>
-  </div>
+<div class="card-body">
+  <h5 class="card-title"><%= movie.name %></h5>
+  <p class="card-text">Status: 
+    <% unless movie.client.nil? %>
+      Rented to <br><strong><%= movie.client.name %></strong>
+    <% else %>
+      Available
+    <% end %>
+  </p>
+</div>

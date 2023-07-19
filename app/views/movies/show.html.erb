@@ -1,10 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @movie %>
-
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
-
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-6">
+    <div class="card mb-3">
+      <%= render @movie %>
+      <div class="card-footer">
+        <%= link_to "Edit this movie", edit_movie_path(@movie), class: "card-link" %>
+        <%= link_to "Back to movies", movies_path, class: "card-link" %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<%= button_to "Destroy this movie", @movie, method: :delete, class: "btn btn-danger" %>
