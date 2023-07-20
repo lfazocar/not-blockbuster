@@ -4,7 +4,14 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all.sort
+    @movies = Movie.all
+    # Pagination and search
+    if params[:query_text].present?
+      @movies = @movies.search_name(params[:query_text])
+      @pagy, @movies = pagy(Movie.all.search_name(params[:query_text]), items: 10)
+    else
+      @pagy, @movies = pagy(Movie.all, items: 10)
+    end
   end
 
   # GET /movies/1 or /movies/1.json
@@ -65,7 +72,7 @@ class MoviesController < ApplicationController
     end
 
     def set_clients
-      @clients = Client.all.pluck :name, :id
+      @clients = Client.all.pluck(:name, :id).push(['No client', nil])
     end
 
     # Only allow a list of trusted parameters through.

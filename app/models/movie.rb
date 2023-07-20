@@ -9,8 +9,17 @@
 #  client_id  :bigint
 #
 class Movie < ApplicationRecord
+  # Relations
   belongs_to :client, optional: true
+
+  # Validations
   validates :name, presence: true
+  
+  # pg_search
+  include PgSearch::Model
+  pg_search_scope :search_name, against: :name
+
+  # Other
 
   def to_s
     self.name

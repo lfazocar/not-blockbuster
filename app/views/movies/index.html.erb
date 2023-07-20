@@ -4,17 +4,29 @@
 
 <%= link_to "New movie", new_movie_path, class: "btn btn-primary mb-3" %>
 
-<div id="movies">
-  <div class="row gy-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-    <% @movies.each do |movie| %>
-      <div class="col align-self-center">
-        <div class="card">
-          <%= render movie %>
-          <div class="card-body border-top">
-           <%= link_to "Show this movie", movie, class: "btn btn-primary" %>
+<%= form_with url: movies_path, method: :get do |form| %>
+  <%= form.text_field :query_text, placeholder: 'Search movies by name', value: params[:query_text], class: "form-text mb-3" %>
+<% end %>
+
+<% if @movies.empty? %>
+
+<h2>No movies found</h2>
+
+<% else %>
+  <div id="movies" class="mb-3">
+    <div class="row gy-3 row-cols-1 row-cols-lg-2">
+      <% @movies.order(:id).each do |movie| %>
+        <div class="col align-self-center">
+          <div class="card">
+            <%= render movie %>
+            <div class="card-body border-top">
+             <%= link_to "Show this movie", movie, class: "btn btn-primary" %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+
+<%== render partial: 'shared/pagy_bootstrap', locals: {pagy: @pagy} if @pagy.pages > 1 %>

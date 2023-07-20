@@ -1,13 +1,11 @@
 <%= form_with(model: movie) do |form| %>
   <% if movie.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+    <div class="alert alert-danger text-start">
+      <h2 class="alert-heading mb-3"><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
 
-      <ul>
-        <% movie.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+      <% movie.errors.each do |error| %>
+        <p><%= error.full_message %></p>
+      <% end %>
     </div>
   <% end %>
 

@@ -78,3 +78,7 @@ end
 gem "cssbundling-rails", "~> 1.1"
 
 gem "jsbundling-rails", "~> 1.0"
+
+gem "pagy", "~> 6.0"
+
+gem "pg_search", "~> 2.3"

@@ -4,23 +4,35 @@
 
 <%= link_to "New client", new_client_path, class:"btn btn-primary mb-3" %>
 
-<div id="clients">
-  <table class="table table-bordered align-middle">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Age</th>
-        <th scope="col">Movies</th>
-        <th scope="col" colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @clients.each do |client| %>
-        <%= render client %>
-        <td><%= link_to "Show this client", client, class: "btn btn-primary" %></td>
+<%= form_with url: clients_path, method: :get do |form| %>
+  <%= form.text_field :query_text, placeholder: 'Search clients by name', value: params[:query_text], class: "form-text mb-3" %>
+<% end %>
+
+<% if @clients.empty? %>
+
+<h2>No clients found</h2>
+
+<% else %>
+  <div id="clients">
+    <table class="table table-bordered align-middle">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Movies</th>
+          <th scope="col">Info</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+          <%= render client %>
+          <td><%= link_to "Show this client", client, class: "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<%== render partial: 'shared/pagy_bootstrap', locals: {pagy: @pagy} if @pagy.pages > 1 %>

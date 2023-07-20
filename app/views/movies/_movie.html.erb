@@ -2,7 +2,7 @@
   <h5 class="card-title"><%= movie.name %></h5>
   <p class="card-text">Status: 
     <% unless movie.client.nil? %>
-      Rented to <br><strong><%= movie.client.name %></strong>
+      Rented to <strong><%= movie.client.name %></strong>
     <% else %>
       Available
     <% end %>
