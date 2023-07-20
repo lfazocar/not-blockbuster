@@ -2,10 +2,10 @@
 
 <h1>Clients</h1>
 
-<%= link_to "New client", new_client_path %>
+<%= link_to "New client", new_client_path, class:"btn btn-primary mb-3" %>
 
 <div id="clients">
-  <table class="table table-bordered">
+  <table class="table table-bordered align-middle">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -18,7 +18,7 @@
     <tbody>
       <% @clients.each do |client| %>
         <%= render client %>
-        <td><%= link_to "Show this client", client %></td>
+        <td><%= link_to "Show this client", client, class: "btn btn-primary" %></td>
         </tr>
       <% end %>
     </tbody>

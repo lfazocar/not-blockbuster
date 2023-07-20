@@ -1,7 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Movies</h1>
-<%= link_to "New movie", new_movie_path %>
+
+<%= link_to "New movie", new_movie_path, class: "btn btn-primary mb-3" %>
+
 <div id="movies">
   <div class="row gy-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
     <% @movies.each do |movie| %>

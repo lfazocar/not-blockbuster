@@ -6,9 +6,9 @@
     <% if client.movies.empty? %>
       None
     <% else %>
-      <ul>
+      <ul class="list-group list-group-flush">
         <% client.movies.each do |movie| %>
-          <li><%= movie %></li>
+          <li class="list-group-item"><%= movie %></li>
         <% end %>
       </ul>
     <% end %>
